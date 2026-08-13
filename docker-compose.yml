@@ -1,0 +1,17 @@
+services:
+  bullkmsgwatssp:
+    build: .
+    container_name: bullkmsgwatssp
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      JWT_SECRET: ${JWT_SECRET:-please-change-this-secret}
+      DATA_DIR: /app/data
+    volumes:
+      - bullkmsgwatssp_data:/app/data
+
+volumes:
+  bullkmsgwatssp_data:
