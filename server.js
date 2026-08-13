@@ -278,5 +278,7 @@ app.post("/webhook",(req,res)=>{
   // We acknowledge immediately so the provider does not retry unnecessarily.
 });
 
-app.get("*",(req,res)=>res.sendFile(path.join(__dirname,"public","index.html")));
+app.use((req,res)=>{
+res.sendFile(path.join(__dirname,'public','index.html'));
+});
 app.listen(PORT,()=>console.log(`BullkMsgWatssp running on http://localhost:${PORT}`));
